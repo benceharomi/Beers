@@ -18,7 +18,7 @@ public class Pub {
      * Creates an ArrayList with the beers
      */
     public Pub(){
-        beers = new ArrayList<>();
+        beers = new ArrayList<Beer>();
     }
 
     /**
@@ -41,7 +41,7 @@ public class Pub {
                 double alcohol = Double.parseDouble((String) jsonObject.get("alcohol"));
                 boolean isCan = (boolean) jsonObject.get("isCan");
                 JSONArray ingArray = (JSONArray) jsonObject.get("ingredients");
-                ArrayList<Ingredient> ingredients= new ArrayList<>();
+                ArrayList<Ingredient> ingredients= new ArrayList<Ingredient>();
                 for(int j = 0;j < ingArray.size(); j++){
                     JSONObject ingObject = (JSONObject) ingArray.get(j);
                     String ingId = (String) ingObject.get("id");
@@ -62,7 +62,7 @@ public class Pub {
      * @return an ArrayList with the grouped beers
      */
     public ArrayList<Brand> GroupByBrands(){
-        ArrayList<Brand> brandArrayList = new ArrayList<>();
+        ArrayList<Brand> brandArrayList = new ArrayList<Brand>();
         for (Beer beer : beers) {
             boolean brandFound = false;
             for (int j = 0; j < brandArrayList.size() && !brandFound; j++) {
@@ -102,7 +102,7 @@ public class Pub {
      * @return a string with the name of the cheapest brand
      */
     public String CheapestBrand(){
-        ArrayList<Brand> brands = (ArrayList<Brand>) this.GroupByBrands().clone();
+        ArrayList<Brand> brands = this.GroupByBrands();
         String cheapestBrand = "";
         double cheapestPrice = 0;
         for (Brand brand : brands){
@@ -129,9 +129,9 @@ public class Pub {
      * @return ArrayList of the beers which lack of the given ingredient
      */
     public ArrayList<Beer> LackIngredient(String ingredientName){
-        ArrayList<Beer> lackIngredientBeers = new ArrayList<>();
+        ArrayList<Beer> lackIngredientBeers = new ArrayList<Beer>();
         for (Beer beer : beers){
-            ArrayList<Ingredient> ingredients = (ArrayList<Ingredient>) beer.getIngredients().clone();
+            ArrayList<Ingredient> ingredients = beer.getIngredients();
             boolean isIngredient = false;
             for (Ingredient ingredient : ingredients){
                 if (ingredient.getIngredientName().equals(ingredientName)) {
@@ -152,7 +152,7 @@ public class Pub {
      * @return an ArrayList of the sorted beers
      */
     public ArrayList<Beer> WaterRatio(){
-        ArrayList<Beer> beersByWaterRatio = (ArrayList<Beer>) beers.clone();
+        ArrayList<Beer> beersByWaterRatio = beers;
         beersByWaterRatio.sort(new WaterComparator());
         return  beersByWaterRatio;
     }
@@ -164,11 +164,11 @@ public class Pub {
      */
     public HashMap<Integer, List<Beer>> HashMap(){
         HashMap<Integer, List<Beer>> hashMap = new HashMap<>();
-        ArrayList<Beer> beerArrayList = (ArrayList<Beer>) beers.clone();
+        ArrayList<Beer> beerArrayList = beers;
         for (Beer beer : beerArrayList) {
             int price = beer.getPrice();
             int roundedPrice = ((price + 99) / 100 ) * 100;
-            ArrayList<Beer> hashBeerList = new ArrayList<>();
+            ArrayList<Beer> hashBeerList = new ArrayList<Beer>();
             if(hashMap.containsKey(roundedPrice)) {
                 hashBeerList = (ArrayList<Beer>) hashMap.get(roundedPrice);
 

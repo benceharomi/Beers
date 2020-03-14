@@ -14,7 +14,7 @@ public class Brand {
      */
     public Brand(String name){
         this.name =name;
-        this.beers = new ArrayList<>();
+        this.beers = new ArrayList<Beer>();
     }
 
     /**
@@ -43,7 +43,7 @@ public class Brand {
      * @return an ArrayList with the beers of the brand
      */
     public ArrayList<Beer> getBeers(){
-        return  (ArrayList<Beer>) beers.clone();
+        return  beers;
     }
 
     public String toString(){

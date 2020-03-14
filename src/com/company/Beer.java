@@ -32,7 +32,7 @@ public class Beer {
         this.brand = brand;
         this.price = price;
         this.alcohol = alcohol;
-        this.ingredients = (ArrayList<Ingredient>) ingredients.clone();
+        this.ingredients = ingredients;
         this.isCan = isCan;
     }
 
@@ -48,7 +48,7 @@ public class Beer {
         this.brand = beer.brand;
         this.price = beer.price;
         this.alcohol = beer.alcohol;
-        this.ingredients = (ArrayList<Ingredient>) beer.ingredients.clone();
+        this.ingredients = beer.ingredients;
         this.isCan = beer.isCan;
     }
 
