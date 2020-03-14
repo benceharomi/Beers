@@ -1,2 +1,2 @@
 language = "java10"
-run = "language = \"bash\" run = \"javac -cp .:./ext/json-simple-1.1.1.jar ./src/com/company/*.java && java -cp ./ext/json-simple-1.1.1.jar:./src com.company.Main"
+run = "javac -cp .:./ext/json-simple-1.1.1.jar ./src/com/company/*.java && java -cp ./ext/json-simple-1.1.1.jar:./src com.company.Main"
