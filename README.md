@@ -8,7 +8,7 @@
 5. List all beers with Water ingredient ratio (remaining ratio) - sort by ratio
 6. Bonus - Hashmap based on properties
 
-JSON file with data can: beers.json
+JSON file with data: beers.json
 
 - - - -
 
